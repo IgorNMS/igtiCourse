@@ -20,6 +20,7 @@ async function init(){
 
 async function writeReadJson(){
     try{
+        //valores iniciais.
         const array = [
             "gol", "palio", "uno", "e por ai vai"
         ];
@@ -27,6 +28,14 @@ async function writeReadJson(){
             carros:array
         };
         await fs.writeFile("teste.json", JSON.stringify(obj));
+        //leu o conteudo
+        const data = JSON.parse(await fs.readFile("teste.json"));
+        console.log(data);
+        //modificamos o conteudo
+        data.carros.push("Sandero");
+        console.log(data);
+        //sobreescrevemos o arquivo com o conteudo alterado
+        await fs.writeFile("teste.json", JSON.stringify(data));
     } catch (err){
         console.log(err);
     }
