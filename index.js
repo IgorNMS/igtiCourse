@@ -1,6 +1,11 @@
 import operations from "./oparations.js";
 import {promises as fs} from "fs";
+import ev from "./events.js";
 
+ev.on("testEventIndexJs", () =>{
+    console.log("ouviu tambem");
+})
+ev.emit("testEventIndexJs", "blablabla");
 init();
 writeReadJson();
 
